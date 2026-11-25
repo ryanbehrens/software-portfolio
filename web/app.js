@@ -247,7 +247,7 @@
 
   function updateChecked() {
     const el = $("#checked");
-    if (!state.data) return;
+    if (!el || !state.data || state.data.static) return; // no status section in the static build
     const secs = state.data.intervalSeconds;
     const every = secs >= 60 ? `every ${Math.round(secs / 60)} min` : `every ${secs} sec`;
     el.textContent = state.data.lastRun ? `Checked ${ago(state.data.lastRun)} · ${every}` : `First check running… · ${every}`;
