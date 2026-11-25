@@ -161,6 +161,7 @@
     for (const app of data.apps) {
       document.querySelectorAll(`[data-id="${app.id}"] .pill`).forEach((p) => setPill(p, app));
     }
+    if (data.static) return;
     renderPulse(data);
     renderBoard(data);
   }
@@ -281,14 +282,34 @@
   }
 
   async function load() {
+    // The static build (scripts/build-static.sh) marks the page, so it
+    // doesn't ask for a Go server that isn't there.
+    if (document.documentElement.hasAttribute("data-static")) return loadStatic();
     try {
       const res = await fetch("/api/apps");
+      if (res.ok && (res.headers.get("content-type") || "").includes("json")) {
+        apply(await res.json());
+        connect();
+        return;
+      }
+    } catch {}
+    loadStatic();
+  }
+
+  // Static mode: hosted without the Go server (for example on Vercel).
+  // The app list comes straight from apps.json and the live status parts
+  // are hidden, since there's nothing checking the apps.
+  async function loadStatic() {
+    document.body.classList.add("static");
+    for (const el of document.querySelectorAll("[data-live]")) el.remove();
+    try {
+      const res = await fetch("/apps.json");
       if (!res.ok) throw new Error(res.status);
-      apply(await res.json());
+      const { apps } = await res.json();
+      apply({ static: true, apps: apps.map((a) => ({ ...a, monitored: false })) });
     } catch {
-      $("#pulse-text").textContent = "Couldn't load app status. Try refreshing.";
+      $("#featured").textContent = "Couldn't load the apps. Try refreshing.";
     }
-    connect();
   }
 
   function connect() {

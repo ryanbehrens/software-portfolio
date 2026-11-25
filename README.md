@@ -80,6 +80,12 @@ Then open http://localhost:8080.
 
 ## Deploy
 
+### Static version (Vercel, free)
+
+The same page also works without the Go server. `scripts/build-static.sh` copies `web/` and `apps.json` into `dist/` and marks the page as static, so it reads `apps.json` directly and hides the live status section. `vercel.json` runs that script, so importing this repo into Vercel needs no extra settings.
+
+### Full version with live status
+
 The checker runs inside the server, so the host must keep it running (no sleeping free tiers).
 
 - **Render**: `render.yaml` is ready. In Render, choose New → Blueprint and pick this repo. It uses the always-on starter plan with a 1 GB disk for history.
