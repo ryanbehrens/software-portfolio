@@ -1,0 +1,138 @@
+{
+  "apps": [
+    {
+      "id": "second-string",
+      "name": "Second String",
+      "tagline": "Fantasy football, rebalanced",
+      "description": "A full fantasy football platform with live drafts, leagues and a real-time game view. Its scoring is balanced so every position matters, and you can swap out a player who gets hurt mid-game.",
+      "category": "Sports",
+      "url": "https://secondstring.app",
+      "image": "img/second-string.jpg",
+      "stack": ["TypeScript", "React", "React Native", "Hono", "PostgreSQL", "Stripe"],
+      "featured": true
+    },
+    {
+      "id": "scene-translator",
+      "name": "Scene Translator",
+      "tagline": "Helping paramedics talk with any patient",
+      "description": "Built at the request of a first responder. Tap a question and the phone says it aloud in the patient's language; the patient answers by tapping or speaking. Works offline in six languages.",
+      "category": "Health & safety",
+      "url": "https://scene-translator.vercel.app",
+      "source": "https://github.com/ryanbehrens/scene-translator",
+      "image": "img/scene-translator.jpg",
+      "stack": ["Web Speech API", "Offline web app", "Translation"],
+      "featured": true
+    },
+    {
+      "id": "yeas-and-nays",
+      "name": "Yeas & Nays",
+      "tagline": "How America got here, one vote at a time",
+      "description": "An interactive history of the United States from 1776 to today: national debt, elections by state, every Congress, every president and every Supreme Court justice, drawn from public government data.",
+      "category": "Data & civics",
+      "url": "https://yeas-and-nays.vercel.app",
+      "source": "https://github.com/ryanbehrens/yeas-and-nays",
+      "image": "img/yeas-and-nays.jpg",
+      "stack": ["D3.js", "Python data pipelines"],
+      "featured": true
+    },
+    {
+      "id": "modbus-academy",
+      "name": "Modbus Academy",
+      "tagline": "Learn how industrial machines talk",
+      "description": "A course on Modbus, the language factory equipment uses to communicate. Includes a live simulator of a controller, a power meter and a motor drive, plus a project where you bring a pump system online.",
+      "category": "Learning",
+      "url": "https://ryanbehrens.github.io/modbus-academy/",
+      "source": "https://github.com/ryanbehrens/modbus-academy",
+      "image": "img/modbus-academy.jpg",
+      "stack": ["JavaScript", "Protocol simulation"],
+      "featured": true
+    },
+    {
+      "id": "pulse-prep",
+      "name": "Pulse Prep",
+      "tagline": "Study companion for nursing students",
+      "description": "Flashcards, practice quizzes and cheat sheets for the NCLEX nursing exam, with a 3D human body you can rotate and explore system by system.",
+      "category": "Health & safety",
+      "url": "https://pulse-prep-umber.vercel.app",
+      "source": "https://github.com/ryanbehrens/pulse-prep",
+      "image": "img/pulse-prep.jpg",
+      "stack": ["three.js", "3D", "Offline web app"]
+    },
+    {
+      "id": "fireground-academy",
+      "name": "Fireground Academy",
+      "tagline": "Firefighter certification prep",
+      "description": "Practice questions, diagrams and study notes for Firefighter I and II exams. Installs on a phone and works without a signal.",
+      "category": "Health & safety",
+      "url": "https://fireground-academy.vercel.app",
+      "source": "https://github.com/ryanbehrens/fireground-academy",
+      "image": "img/fireground-academy.jpg",
+      "stack": ["Offline web app"]
+    },
+    {
+      "id": "cubelab",
+      "name": "CubeLab",
+      "tagline": "Learn to solve a Rubik's Cube fast",
+      "description": "A 3D cube you can turn with a swipe. Paint in your own scrambled cube and it shows you the solution step by step, or drill each stage of the speed-solving method with a timer.",
+      "category": "Games & hobbies",
+      "url": "https://speed-cube-trainer.vercel.app",
+      "image": "img/cubelab.jpg",
+      "stack": ["React", "three.js", "Solver algorithms"]
+    },
+    {
+      "id": "chess-trainer",
+      "name": "Chess Trainer",
+      "tagline": "A chess coach that grades every move",
+      "description": "Play a world-class chess engine at eight skill levels, see the best moves as arrows on the board, and drill 77 opening lines until you know them by heart.",
+      "category": "Games & hobbies",
+      "url": "https://ryanbehrens.github.io/chess-trainer/",
+      "source": "https://github.com/ryanbehrens/chess-trainer",
+      "image": "img/chess-trainer.jpg",
+      "stack": ["React", "Stockfish"]
+    },
+    {
+      "id": "turnbot",
+      "name": "Turnbot",
+      "tagline": "Whose turn is it? Every phone knows",
+      "description": "A game night helper. Each player's phone glows on their turn, says their name and nudges anyone taking too long. Keeps score and tracks your group's standings over time.",
+      "category": "Games & hobbies",
+      "url": "https://turnlight-xi.vercel.app",
+      "image": "img/turnbot.jpg",
+      "stack": ["Next.js", "PostgreSQL", "Push notifications"]
+    },
+    {
+      "id": "usa-engraving-map",
+      "name": "USA Engraving Map",
+      "tagline": "Design a laser-cut map of the U.S.",
+      "description": "Choose roads, rivers, parks and landmarks, set the size, and download a file ready for a laser engraver, with each layer kept separate.",
+      "category": "Tools & design",
+      "url": "https://ryanbehrens.github.io/usa-engraving-map/",
+      "source": "https://github.com/ryanbehrens/usa-engraving-map",
+      "image": "img/usa-engraving-map.jpg",
+      "stack": ["SVG", "Map data"]
+    },
+    {
+      "id": "colonel-nocturnal",
+      "name": "Colonel Nocturnal",
+      "tagline": "Learning games for kids 3 to 7",
+      "description": "Letters, numbers, shapes, colors, animals and planets in English and Spanish, with an owl guide kids can dress up.",
+      "category": "Learning",
+      "url": "https://play.google.com/store/apps/details?id=com.ryanbehrens.colonelnocturnal",
+      "image": "img/colonel-nocturnal.jpg",
+      "stack": ["Android", "Capacitor"],
+      "badge": "On Google Play",
+      "monitor": false
+    },
+    {
+      "id": "art-portfolio",
+      "name": "Art Portfolio",
+      "tagline": "Illustration and 3D work",
+      "description": "Paintings, illustration and 3D modeling from my fine-arts background, which shapes how I design every app.",
+      "category": "Tools & design",
+      "url": "https://ryan-behrens-portfolio.vercel.app",
+      "source": "https://github.com/ryanbehrens/ryan-behrens-portfolio",
+      "image": "img/art-portfolio.jpg",
+      "stack": ["Illustration", "3D"]
+    }
+  ]
+}

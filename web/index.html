@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryan Behrens · Product Engineer</title>
+<meta name="description" content="Ryan Behrens designs and builds software people use: apps for paramedics, nursing students, fantasy football leagues and factory technicians.">
+<meta property="og:title" content="Ryan Behrens · Product Engineer">
+<meta property="og:description" content="Live apps I designed, built and shipped, with real-time status.">
+<meta property="og:image" content="/img/second-string.jpg">
+<meta name="theme-color" content="#F6F8FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1420" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script>
+  // Apply the saved theme before first paint so the page doesn't flash.
+  try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch {}
+</script>
+</head>
+<body>
+<a class="skip" href="#work">Skip to the work</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="mark" href="#top" aria-label="Ryan Behrens, home">RB</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#status">Status</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme" type="button" aria-label="Switch light or dark theme">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow">Product engineer · Olympia, Washington</p>
+    <h1>I design and build software <em>people actually use.</em></h1>
+    <p class="lede">
+      Apps for paramedics, nursing students, fantasy football leagues and factory technicians.
+      I take each one from the first conversation to a finished product, and I keep them running.
+    </p>
+    <div class="pulse" id="pulse" aria-live="polite">
+      <span class="dot" data-status="unknown"></span>
+      <span id="pulse-text">Checking my apps…</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="#work">See the work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="work" class="work">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Four products, four very different users</h2>
+      </header>
+      <div id="featured" class="featured"></div>
+    </div>
+  </section>
+
+  <section class="more">
+    <div class="wrap">
+      <header class="section-head row">
+        <div>
+          <p class="eyebrow">Everything else</p>
+          <h2>More apps I've shipped</h2>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+      </header>
+      <div id="grid" class="grid"></div>
+    </div>
+  </section>
+
+  <section id="status" class="status">
+    <div class="wrap">
+      <header class="section-head row">
+        <div>
+          <p class="eyebrow">Live status</p>
+          <h2>Is everything up right now?</h2>
+          <p class="sub">A small service I wrote in Go checks every app every few minutes. Each bar is one hour, over the last 24 hours.</p>
+        </div>
+        <p class="checked" id="checked"></p>
+      </header>
+      <div class="board" id="board" role="table" aria-label="Uptime by app">
+        <div class="board-row board-head" role="row">
+          <span role="columnheader">App</span>
+          <span role="columnheader">Now</span>
+          <span role="columnheader" class="bars-head">Last 24 hours</span>
+          <span role="columnheader" class="num">Uptime</span>
+          <span role="columnheader" class="num">Response</span>
+        </div>
+        <div id="board-rows"></div>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><i data-status="up"></i>Online</span>
+        <span><i data-status="partial"></i>Some checks failed</span>
+        <span><i data-status="down"></i>Down</span>
+        <span><i data-status="unknown"></i>No data yet</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about wrap">
+    <p class="eyebrow">About</p>
+    <div class="about-grid">
+      <h2>Engineer by trade, artist by training.</h2>
+      <div class="about-copy">
+        <p>I've built software professionally for ten years, most of it for Washington State's Employment Security Department, where I turn what people need into tools they use every day.</p>
+        <p>Since 2024 I've also designed and shipped the apps on this page on my own. I start by talking with the people who'll use the app, build something they can try quickly, and keep improving it from what they tell me.</p>
+        <p>Before code, I studied fine art and worked as an illustrator. That's why I care how things look and feel, not only whether they work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-inner">
+      <h2>Let's build something.</h2>
+      <p>I'm looking for product engineering roles. The fastest way to reach me is email.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:ryansbehrens01@gmail.com">ryansbehrens01@gmail.com</a>
+        <a class="btn" href="https://github.com/ryanbehrens" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/ryan-behrens-7b740677" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <span>© <span id="year"></span> Ryan Behrens</span>
+  <a href="https://github.com/ryanbehrens/software-portfolio" rel="noopener">How this site works</a>
+</footer>
+
+<template id="tpl-featured">
+  <article class="feature">
+    <a class="shot" target="_blank" rel="noopener">
+      <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><b class="addr"></b></span>
+      <img loading="lazy" alt="">
+    </a>
+    <div class="feature-copy">
+      <p class="eyebrow cat"></p>
+      <h3></h3>
+      <p class="tagline"></p>
+      <p class="desc"></p>
+      <ul class="tags"></ul>
+      <div class="actions">
+        <a class="btn primary open" target="_blank" rel="noopener">Open the app <span aria-hidden="true">↗</span></a>
+        <a class="link src" target="_blank" rel="noopener">Source code</a>
+        <span class="pill"></span>
+      </div>
+    </div>
+  </article>
+</template>
+
+<template id="tpl-card">
+  <article class="card">
+    <a class="shot" target="_blank" rel="noopener">
+      <img loading="lazy" alt="">
+      <span class="pill"></span>
+    </a>
+    <div class="card-copy">
+      <p class="eyebrow cat"></p>
+      <h3><a class="title" target="_blank" rel="noopener"></a></h3>
+      <p class="desc"></p>
+      <ul class="tags"></ul>
+    </div>
+  </article>
+</template>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Render blueprint. In Render: New → Blueprint → pick this repo.
+#
+# The status checker runs inside the server, so the service has to stay
+# awake. Render's free tier sleeps after 15 minutes idle, which would pause
+# the checks, so this uses the always-on "starter" plan ($7/month).
+services:
+  - type: web
+    name: ryan-behrens-portfolio
+    runtime: go
+    plan: starter
+    branch: main
+    buildCommand: go build -trimpath -o portfolio .
+    startCommand: ./portfolio
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: CHECK_INTERVAL
+        value: 5m
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: status-history
+      mountPath: /var/data
+      sizeGB: 1
