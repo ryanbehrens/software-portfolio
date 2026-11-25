@@ -2,10 +2,13 @@
 package server
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"io/fs"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/ryanbehrens/software-portfolio/internal/config"
@@ -32,8 +35,39 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, _ *http.Request) {
 		w.Write([]byte("ok"))
 	})
-	mux.Handle("GET /", staticCache(http.FileServerFS(s.static)))
+	mux.Handle("GET /", withETags(s.static, http.FileServerFS(s.static)))
 	return securityHeaders(mux)
+}
+
+// withETags fingerprints every static file once at startup. Browsers keep
+// their copy but check it on each visit, and the file server answers
+// "304 Not Modified" when the fingerprint still matches. So a new screenshot
+// shows up right after a deploy, without re-downloading unchanged files.
+func withETags(files fs.FS, next http.Handler) http.Handler {
+	tags := map[string]string{}
+	fs.WalkDir(files, ".", func(path string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return nil
+		}
+		data, err := fs.ReadFile(files, path)
+		if err != nil {
+			return nil
+		}
+		sum := sha256.Sum256(data)
+		tags["/"+path] = `"` + hex.EncodeToString(sum[:8]) + `"`
+		return nil
+	})
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		p := r.URL.Path
+		if strings.HasSuffix(p, "/") {
+			p += "index.html"
+		}
+		if tag, ok := tags[p]; ok {
+			w.Header().Set("ETag", tag)
+		}
+		w.Header().Set("Cache-Control", "no-cache")
+		next.ServeHTTP(w, r)
+	})
 }
 
 type appView struct {
@@ -157,17 +191,6 @@ func securityHeaders(next http.Handler) http.Handler {
 		h.Set("X-Content-Type-Options", "nosniff")
 		h.Set("Referrer-Policy", "strict-origin-when-cross-origin")
 		h.Set("X-Frame-Options", "DENY")
-		next.ServeHTTP(w, r)
-	})
-}
-
-func staticCache(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if len(r.URL.Path) > 5 && r.URL.Path[:5] == "/img/" {
-			w.Header().Set("Cache-Control", "public, max-age=86400")
-		} else {
-			w.Header().Set("Cache-Control", "no-cache")
-		}
 		next.ServeHTTP(w, r)
 	})
 }

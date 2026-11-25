@@ -121,4 +121,20 @@ func TestStaticPageAndHeaders(t *testing.T) {
 	if resp.Header.Get("X-Content-Type-Options") != "nosniff" {
 		t.Error("security headers should be set")
 	}
+
+	// A repeat visit with the same fingerprint gets a cheap 304, not the file again.
+	etag := resp.Header.Get("ETag")
+	if etag == "" {
+		t.Fatal("static files should carry an ETag")
+	}
+	req, _ := http.NewRequest(http.MethodGet, srv.URL+"/", nil)
+	req.Header.Set("If-None-Match", etag)
+	again, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+	again.Body.Close()
+	if again.StatusCode != http.StatusNotModified {
+		t.Errorf("unchanged file: got status %d, want 304", again.StatusCode)
+	}
 }
