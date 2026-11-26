@@ -35,6 +35,8 @@ func TestParseRejectsBadEntries(t *testing.T) {
 		{"missing name", `{"apps":[{"id":"a","url":"https://a.com"}]}`, "name is required"},
 		{"bad url", `{"apps":[{"id":"a","name":"A","url":"ftp://a.com"}]}`, "url"},
 		{"bad source", `{"apps":[{"id":"a","name":"A","url":"https://a.com","source":"github"}]}`, "source"},
+		{"external case study", `{"apps":[{"id":"a","name":"A","url":"https://a.com","caseStudy":"https://evil.com/x"}]}`, "caseStudy"},
+		{"protocol-relative case study", `{"apps":[{"id":"a","name":"A","url":"https://a.com","caseStudy":"//evil.com/x"}]}`, "caseStudy"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

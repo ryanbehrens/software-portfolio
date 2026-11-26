@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case study: Second String sub plans · Ryan Behrens</title>
+<meta name="description" content="How I designed pre-set sub plans for Second String, a fantasy football app: the problem, the user flow, wireframes and the design decisions behind them.">
+<meta property="og:title" content="Case study: Second String sub plans">
+<meta property="og:description" content="The problem, user flow, wireframes and design decisions behind Second String's automatic injury subs.">
+<meta property="og:image" content="/case-studies/second-string/img/flow.jpg">
+<meta name="theme-color" content="#F6F8FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1420" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/case-studies/case.css">
+<script>
+  try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch {}
+</script>
+</head>
+<body>
+<header class="case-nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="Ryan Behrens, home">RB</a>
+    <a class="link" href="/#work">← Back to all work</a>
+  </div>
+</header>
+
+<main class="case wrap">
+  <section class="case-hero">
+    <p class="eyebrow">Case study · Second String</p>
+    <h1>Designing sub plans: help for the games you can't watch</h1>
+    <p class="lede">Second String is a fantasy football app I designed and built. Its headline feature lets players line up backups ahead of time, so an injury mid-game doesn't cost them the week.</p>
+  </section>
+
+  <dl class="facts">
+    <div><dt>Role</dt><dd>Product designer and engineer, solo</dd></div>
+    <div><dt>Platforms</dt><dd>Web and mobile app</dd></div>
+    <div><dt>Work</dt><dd>Flows, wireframes, UI, front and back end</dd></div>
+    <div><dt>Status</dt><dd>Live at <a href="https://secondstring.app" rel="noopener">secondstring.app</a></dd></div>
+  </dl>
+
+  <section class="chapter" aria-labelledby="problem">
+    <h2 id="problem">The problem</h2>
+    <div class="prose">
+      <p>Fantasy players set a lineup before the games start, then life happens. If a starter is ruled out halfway through a game, that spot stops scoring, and in most apps the only fix is to be on your phone at the right moment.</p>
+      <p>The feature had to work while the player isn't looking, so the rules had to be ones people could trust without watching:</p>
+      <ul>
+        <li><strong>Only a real injury triggers a swap.</strong> A player marked OUT, never a coach's decision or a hunch.</li>
+        <li><strong>No going back.</strong> Once a starter is swapped out, they're locked out for that week.</li>
+        <li><strong>Fair scoring.</strong> One lineup spot can't earn more than one game's worth of points.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" aria-labelledby="flow">
+    <h2 id="flow">The user flow</h2>
+    <div class="prose"><p>Two moments matter: a minute of setup before kickoff, and the game-day swap the player never has to touch.</p></div>
+    <figure class="diagram">
+      <img src="/case-studies/second-string/img/flow.jpg" width="2000" height="1066" alt="User flow. Before kickoff: open your league, tap Sub Plans, pick a starter, rank up to three eligible backups and save. On game day: if the starter is ruled OUT, the first healthy backup is subbed in automatically and the owner gets an alert; if not, the starter plays and nothing changes.">
+    </figure>
+    <p class="hint">On a phone, swipe sideways to see the whole flow, or <a href="/case-studies/second-string/img/flow.jpg">open it full size</a>.</p>
+  </section>
+
+  <section class="chapter" aria-labelledby="screens">
+    <h2 id="screens">Wireframes</h2>
+    <div class="prose"><p>Four phone screens take a player through the whole loop, from noticing an unprotected spot to seeing the swap happen.</p></div>
+    <ul class="screens">
+      <li><figure>
+        <img src="/case-studies/second-string/img/league-home.jpg" width="780" height="1688" loading="lazy" alt="League home wireframe: this week's matchup, then a green callout reading 2 starters have no sub plan, with a Set sub plans button.">
+        <figcaption><b>1 · League home</b>Gaps show up where players already look, with the cost in plain words and one button to fix it.</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="/case-studies/second-string/img/sub-plans.jpg" width="780" height="1688" loading="lazy" alt="Sub plans wireframe: a progress bar and a list of starters by position, each showing how many backups are set; two rows are highlighted amber and say Not set.">
+        <figcaption><b>2 · Sub plans</b>Every starter at a glance. Missing plans are marked with text and color, so they don't depend on color alone.</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="/case-studies/second-string/img/edit-plan.jpg" width="780" height="1688" loading="lazy" alt="Backup order wireframe: the starter marked Questionable, two ranked backups with drag handles, an Add backup 3 slot limited to running backs, a short rules note, and a Save plan button.">
+        <figcaption><b>3 · Set backup order</b>Rank up to three backups. Only eligible positions can be added, and the rules sit right where the decision is made.</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="/case-studies/second-string/img/live-matchup.jpg" width="780" height="1688" loading="lazy" alt="Live matchup wireframe: live score, a green Sub plan used alert explaining the running back was ruled out in the 2nd quarter, and the lineup showing the starter marked OUT and the backup marked Subbed in.">
+        <figcaption><b>4 · Game day</b>The alert says what happened and why, and the lineup shows the swap in place so the score makes sense.</figcaption>
+      </figure></li>
+    </ul>
+  </section>
+
+  <section class="chapter" aria-labelledby="decisions">
+    <h2 id="decisions">Design decisions</h2>
+    <div class="decisions">
+      <article><h3>Prompt, don't hide</h3><p>A feature people never find doesn't help them. The league home names how many starters are unprotected, so setup starts from the page players open every week.</p></article>
+      <article><h3>Limit the choices</h3><p>Three backups per starter, and only players who can legally fill that spot. Fewer options keep the screen quick to finish and rule out plans that could never work.</p></article>
+      <article><h3>Explain the rules once, in place</h3><p>The two rules that surprise people (only OUT triggers a swap, and there's no coming back) appear on the screen where the plan is made, not in a help page.</p></article>
+      <article><h3>Make automation visible</h3><p>An app acting on its own has to show its work. The game-day alert and the highlighted swap explain a score change before anyone has to ask.</p></article>
+    </div>
+  </section>
+
+  <div class="case-end">
+    <a class="btn primary" href="https://secondstring.app" rel="noopener">Open Second String <span aria-hidden="true">↗</span></a>
+    <a class="btn" href="/#work">See more work</a>
+  </div>
+</main>
+
+<footer class="foot wrap">
+  <span>© 2026 Ryan Behrens</span>
+  <a href="mailto:ryansbehrens01@gmail.com">ryansbehrens01@gmail.com</a>
+</footer>
+</body>
+</html>

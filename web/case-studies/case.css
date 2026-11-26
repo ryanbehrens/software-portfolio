@@ -1,0 +1,57 @@
+/* Case study pages. Builds on the tokens and base styles in styles.css. */
+
+.case-nav { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.case-nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.case-nav .mark { font: 600 1rem/1 var(--serif); text-decoration: none; }
+
+.case { padding: 56px 0 96px; }
+.case-hero { display: grid; gap: 18px; max-width: 760px; }
+.case-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+.case-hero .lede { font-size: 1.15rem; color: var(--ink-2); }
+
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px;
+  margin: 40px 0 0; padding: 20px 0; border-block: 1px solid var(--line);
+}
+.facts div { display: grid; gap: 4px; }
+.facts dt { font: 600 .75rem/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 0; color: var(--ink); }
+.facts a { text-underline-offset: 3px; }
+
+.chapter { margin-top: 72px; display: grid; gap: 18px; }
+.chapter > h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
+.prose { display: grid; gap: 14px; max-width: 720px; color: var(--ink-2); }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+
+/* The flow diagram is wide: on small screens it scrolls sideways in its own box
+   instead of shrinking until the words can't be read. */
+.diagram {
+  margin: 8px 0 0; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow); overflow-x: auto;
+}
+.diagram img { width: 100%; min-width: 860px; height: auto; }
+.hint { font-size: .9rem; color: var(--muted); }
+.hint a { color: var(--ink-2); text-underline-offset: 3px; }
+
+.screens {
+  list-style: none; margin: 8px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;
+}
+.screens figure { margin: 0; display: grid; gap: 14px; align-content: start; }
+.screens img {
+  width: 100%; height: auto; border-radius: 22px;
+  border: 1px solid var(--line); box-shadow: var(--shadow); background: #fff;
+}
+.screens figcaption { display: grid; gap: 6px; font-size: .95rem; color: var(--ink-2); }
+.screens figcaption b { font: 500 1.1rem/1.3 var(--serif); color: var(--ink); }
+
+.decisions { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 8px; }
+.decisions article {
+  display: grid; gap: 8px; align-content: start; padding: 22px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.decisions h3 { font-size: 1.2rem; }
+.decisions p { color: var(--ink-2); font-size: .95rem; }
+
+.case-end { margin-top: 72px; display: flex; flex-wrap: wrap; gap: 12px; }

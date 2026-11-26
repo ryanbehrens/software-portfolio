@@ -25,7 +25,9 @@ type App struct {
 	Image       string   `json:"image,omitempty"`
 	Stack       []string `json:"stack"`
 	Badge       string   `json:"badge,omitempty"`
-	Featured    bool     `json:"featured,omitempty"`
+	// CaseStudy is a site path, like "/case-studies/second-string/", to a design write-up.
+	CaseStudy string `json:"caseStudy,omitempty"`
+	Featured  bool   `json:"featured,omitempty"`
 	// Monitor turns uptime checks on or off. It defaults to true; set it to
 	// false for links that aren't ours to check, such as an app store page.
 	Monitor *bool `json:"monitor,omitempty"`
@@ -77,6 +79,9 @@ func Parse(data []byte) ([]App, error) {
 			if err := checkURL(a.Source); err != nil {
 				problems = append(problems, where+": source "+err.Error())
 			}
+		}
+		if a.CaseStudy != "" && (!strings.HasPrefix(a.CaseStudy, "/") || strings.HasPrefix(a.CaseStudy, "//")) {
+			problems = append(problems, where+": caseStudy must be a path on this site, like /case-studies/second-string/")
 		}
 	}
 	if len(problems) > 0 {

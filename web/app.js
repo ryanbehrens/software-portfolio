@@ -101,6 +101,8 @@
       $(".open", el).href = app.url;
       const src = $(".src", el);
       if (app.source) src.href = app.source; else src.remove();
+      const cs = $(".case", el);
+      if (app.caseStudy) cs.href = app.caseStudy; else cs.remove();
       featured.append(el);
     }
 

@@ -9,6 +9,7 @@
       "url": "https://secondstring.app",
       "image": "img/second-string.jpg",
       "stack": ["TypeScript", "React", "React Native", "Hono", "PostgreSQL", "Stripe"],
+      "caseStudy": "/case-studies/second-string/",
       "featured": true
     },
     {
